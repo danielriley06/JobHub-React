@@ -9,7 +9,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 export const Header = () => (
   <AppBar
-    title="Title"
+    title="JobHub"
     iconElementRight={
       <IconMenu
         iconButtonElement={
