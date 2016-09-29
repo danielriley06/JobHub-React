@@ -7,7 +7,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 export const CoreLayout = ({ children }) => (
-  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+
+  <MuiThemeProvider muiTheme={getMuiTheme({userAgent: navigator.userAgent})}>
     <div>
       <Header />
       <div className='container-fluid text-center'>
