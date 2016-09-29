@@ -27,7 +27,7 @@ export const receivePosts = (reddit, json) => ({
 
 const fetchPosts = reddit => dispatch => {
   dispatch(requestPosts(reddit))
-  return fetch(`https://www.reddit.com/r/${reddit}.json`)
+  return fetch(`http://api.indeed.com/ads/apisearch?publisher=7633080574080109&format=json&q=${jobTitle}&l=${city}%2C+${state}&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2`)
     .then(response => response.json())
     .then(json => dispatch(receivePosts(reddit, json)))
 }

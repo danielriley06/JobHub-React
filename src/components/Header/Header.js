@@ -6,10 +6,27 @@ import IconButton from 'material-ui/IconButton'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import FlatButton from 'material-ui/FlatButton'
+import FontIcon from 'material-ui/FontIcon'
+import ActionAndroid from 'material-ui/svg-icons/action/android'
+import {Tabs, Tab} from 'material-ui/Tabs'
+
+var styles = {
+  appBar: {
+    flexWrap: 'wrap',
+  },
+  tabs: {
+    width: '100%',
+  },
+}
+
 
 export const Header = () => (
   <AppBar
     title="JobHub"
+    style={styles.appBar}
+    showMenuIconButton={false}
+
     iconElementRight={
       <IconMenu
         iconButtonElement={
@@ -23,7 +40,12 @@ export const Header = () => (
         <MenuItem primaryText="Sign out" />
       </IconMenu>
     }
-  />
+  >
+    <Tabs style={styles.tabs}>
+      <Tab label='Dashboard' containerElement={<Link to="/" />} />
+      <Tab label='Search' containerElement={<Link to="/counter" />} />
+    </Tabs>
+  </AppBar>
 )
 
 export default Header

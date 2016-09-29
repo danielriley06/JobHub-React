@@ -13,58 +13,8 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
 
-const listItemData = [
-  {
-    id: 1,
-    company: 'WalMart',
-    date: '10-06-2016',
-    location: 'New York City, NY',
-  },
-  {
-    id: 2,
-    company: 'Peeps N Peens',
-    date: '10-01-2016',
-    location: 'New York City, NY',
-  },
-  {
-    id: 3,
-    company: 'Alocholics Anonymous',
-    date: '09-06-2016',
-    location: 'New York City, NY',
-  },
-  {
-    id: 4,
-    company: "Luna's Bean Emporium",
-    date: '10-12-2016',
-    location: 'New York City, NY',
-  },
-  {
-    id: 5,
-    company: 'Penn Station Homeless Committee',
-    date: '10-08-2016',
-    location: 'New York City, NY',
-  },
-  {
-    id: 6,
-    company: 'Choxi',
-    date: '10-14-2016',
-    location: 'New York City, NY',
-  },
-  {
-    id: 7,
-    company: 'UltraShitTMS',
-    date: '09-28-2016',
-    location: 'New York City, NY',
-  },
-  {
-    id: 8,
-    company: "Hillary Clinton's Peep Cleaner",
-    date: '10-06-2016',
-    location: 'New York City, NY',
-  },
-];
 
-const JobBoardGridList = () => (
+const JobBoardGridList = ({ posts, onPostIconClick }) => (
   <div className="row">
     <div className="col-xs-12">
       <div className="jobgridlist">

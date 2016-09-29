@@ -4,10 +4,6 @@ import createStore from './store/createStore'
 import AppContainer from './containers/AppContainer'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
-
 // ========================================================
 // Store Instantiation
 // ========================================================
@@ -18,6 +14,10 @@ const store = createStore(initialState)
 // Render Setup
 // ========================================================
 const MOUNT_NODE = document.getElementById('root')
+
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 let render = () => {
   const routes = require('./routes/index').default(store)
