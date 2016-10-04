@@ -1,15 +1,22 @@
+// ------------------------------------
+// Action Types
+// ------------------------------------
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const SELECT_REDDIT = 'SELECT_REDDIT'
-export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT'
+export const SELECT_BOARD = 'SELECT_BOARD'
+export const INVALIDATE_BOARD = 'INVALIDATE_BOARD'
 
-export const selectReddit = reddit => ({
-  type: SELECT_REDDIT,
+// ------------------------------------
+// Actions Creators
+// ------------------------------------
+
+export const selectBoard = reddit => ({
+  type: SELECT_BOARD,
   reddit
 })
 
-export const invalidateReddit = reddit => ({
-  type: INVALIDATE_REDDIT,
+export const invalidateBoard = reddit => ({
+  type: INVALIDATE_BOARD,
   reddit
 })
 
@@ -25,12 +32,20 @@ export const receivePosts = (reddit, json) => ({
   receivedAt: Date.now()
 })
 
+// ------------------------------------
+// Async Request
+// ------------------------------------
+
 const fetchPosts = reddit => dispatch => {
   dispatch(requestPosts(reddit))
   return fetch(`http://api.indeed.com/ads/apisearch?publisher=7633080574080109&format=json&q=${jobTitle}&l=${city}%2C+${state}&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2`)
     .then(response => response.json())
     .then(json => dispatch(receivePosts(reddit, json)))
 }
+
+// ------------------------------------
+// Action Handlers
+// ------------------------------------
 
 const shouldFetchPosts = (state, reddit) => {
   const posts = state.postsByReddit[reddit]

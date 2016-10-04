@@ -14,10 +14,11 @@ import {Tabs, Tab} from 'material-ui/Tabs'
 var styles = {
   appBar: {
     flexWrap: 'wrap',
+    backgroundColor: '#2196F3'
   },
   tabs: {
     width: '100%',
-  },
+  }
 }
 
 
@@ -26,7 +27,6 @@ export const Header = () => (
     title="JobHub"
     style={styles.appBar}
     showMenuIconButton={false}
-
     iconElementRight={
       <IconMenu
         iconButtonElement={
@@ -41,7 +41,7 @@ export const Header = () => (
       </IconMenu>
     }
   >
-    <Tabs style={styles.tabs}>
+    <Tabs style={styles.tabs} tabItemContainerStyle={{backgroundColor: '#2196F3'}}>
       <Tab label='Dashboard' containerElement={<Link to="/" />} />
       <Tab label='Search' containerElement={<Link to="/counter" />} />
     </Tabs>
