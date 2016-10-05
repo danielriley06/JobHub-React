@@ -1,17 +1,37 @@
+import axios from 'axios'
+
 // ------------------------------------
 // Constants
 // ------------------------------------
 export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
 
+export const FETCH_POSTS = 'FETCH_POSTS'
+export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
+export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE'
+
 // ------------------------------------
-// Actions
+// Actions -- JOBS
 // ------------------------------------
-export function increment (value = 1) {
-  return {
-    type    : COUNTER_INCREMENT,
-    payload : value
+export function fetchPosts() {
+  return function(dispatch) {
+    return axios({
+      method: 'get',
+      url: `https://www.reddit.com/r/reactjs.json`,
+      headers: []
+    })
+    .then(function(response) {
+      dispatch(receivePosts(response))
+    })
   }
 }
+
+function receivePosts(response) {
+	return {
+		type: 'FETCH_POSTS',
+		posts: response.data.data.children.map(child => child.data)
+	}
+}
+
 
 /*  This is a thunk, meaning it is a function that immediately
     returns a function for lazy evaluation. It is incredibly useful for
@@ -21,33 +41,21 @@ export function increment (value = 1) {
     you'd probably want to dispatch an action of COUNTER_DOUBLE and let the
     reducer take care of this logic.  */
 
-export const doubleAsync = () => {
-  return (dispatch, getState) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        dispatch(increment(getState().counter))
-        resolve()
-      }, 200)
-    })
-  }
-}
 
-export const actions = {
-  increment,
-  doubleAsync
-}
+
+
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [COUNTER_INCREMENT] : (state, action) => state + action.payload
+  [FETCH_POSTS] : (state, action) => [state, {posts: action.posts}]
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = 0
+const initialState = { }
 export default function counterReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
