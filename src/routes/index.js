@@ -2,7 +2,7 @@
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 import Home from './Home'
 import JobProspectGridList from './JobProspect'
-import CounterRoute from './Counter'
+import SearchRoute from './JobSearch'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -12,7 +12,7 @@ export const createRoutes = (store) => ({
   component   : CoreLayout,
   indexRoute  : JobProspectGridList,
   childRoutes : [
-    CounterRoute(store)
+    SearchRoute(store)
   ]
 })
 

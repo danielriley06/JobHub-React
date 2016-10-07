@@ -43,7 +43,7 @@ export const Header = () => (
   >
     <Tabs style={styles.tabs} tabItemContainerStyle={{backgroundColor: '#2196F3'}}>
       <Tab label='Dashboard' containerElement={<Link to="/" />} />
-      <Tab label='Search' containerElement={<Link to="/counter" />} />
+      <Tab label='Search' containerElement={<Link to="/search" />} />
     </Tabs>
   </AppBar>
 )

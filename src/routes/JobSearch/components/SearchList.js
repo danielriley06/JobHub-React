@@ -11,6 +11,8 @@ import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 import ActionInfo from 'material-ui/svg-icons/action/info'
 import RaisedButton from 'material-ui/RaisedButton'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 
 export const Counter = (props) => (
   <div style={{ margin: '0 auto' }} >
@@ -18,7 +20,7 @@ export const Counter = (props) => (
       Fetch Posts
     </button>
     <div className="row">
-      <div className="col-xs-6">
+      <div className="col-xs-12">
         <div className="jobgridlist">
           <List>
             <Subheader>Current Job Prospects</Subheader>
@@ -29,7 +31,11 @@ export const Counter = (props) => (
                 <ListItem
                   key={props.posts[key].id}
                   primaryText={props.posts[key].title}
-                  rightIcon={<ActionInfo />}
+                  rightIconButton={
+                    <FloatingActionButton style={{top: '22px',}} mini={true} secondary={true}>
+                      <ContentAdd />
+                    </FloatingActionButton>
+                  }
                   secondaryText={
                     <p>
                       <span>{props.posts[key].author}</span><br />

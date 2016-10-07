@@ -1,5 +1,5 @@
 import React from 'react'
-import Counter from './Counter'
+import SearchList from './SearchList'
 
 export const Post = (props) => (
   <div style={{ margin: '0 auto' }} >
