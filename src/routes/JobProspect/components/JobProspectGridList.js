@@ -23,7 +23,7 @@ const styles = {
     overflowY: 'auto',
     marginBottom: 24,
   },
-};
+}
 
 const listItemData = [
   {
@@ -74,7 +74,7 @@ const listItemData = [
     date: '10-06-2016',
     location: 'New York City, NY',
   },
-];
+]
 
 const JobProspectGridList = () => (
   <div className="row">
@@ -105,6 +105,6 @@ const JobProspectGridList = () => (
       <RaisedButton label="Add Job Prospect" secondary={true} fullWidth={true} style={{marginTop: '10px'}} />
     </div>
   </div>
-);
+)
 
-export default JobProspectGridList;
+export default JobProspectGridList

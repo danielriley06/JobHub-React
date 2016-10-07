@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchPosts } from '../modules/counter'
+import { fetchPosts } from '../modules/actions'
 
 /*  This is a container component. Notice it does not contain any JSX,
     nor does it import React. This component is **only** responsible for
@@ -17,7 +17,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => ({
-  posts: state.counter
+  posts: state.posts
 })
 
 /*  Note: mapStateToProps is where you should use `reselect` to create selectors, ie:
