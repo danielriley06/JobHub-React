@@ -1,37 +1,36 @@
 // We only need to import the modules necessary for initial render
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
-import Home from './Home'
+import ModalLayout from '../layouts/ModalLayout/ModalLayout'
 import JobProspectGridList from './JobProspect'
 import SearchRoute from './JobSearch'
+import LoginRoute from './Login'
 
-/*  Note: Instead of using JSX, we recommend using react-router
-    PlainRoute objects to build route definitions.   */
+function requireAuth (store, replace) {
+  const token = localStorage.getItem('auth_token')
+  if (!token) replace('/login')
+}
+
 
 export const createRoutes = (store) => ({
-  path        : '/',
-  component   : CoreLayout,
-  indexRoute  : JobProspectGridList,
-  childRoutes : [
-    SearchRoute(store)
+  path: '/',
+  childRoutes: [
+    // Authenticated
+    {
+      component: CoreLayout,
+      onEnter: requireAuth,
+      indexRoute: JobProspectGridList(store),
+      childRoutes: [
+        SearchRoute(store)
+      ]
+    },
+    // Not-authenticated
+    {
+      component: ModalLayout,
+      childRoutes: [
+        LoginRoute(store)
+      ]
+    }
   ]
 })
-
-/*  Note: childRoutes can be chunked or otherwise loaded programmatically
-    using getChildRoutes with the following signature:
-
-    getChildRoutes (location, cb) {
-      require.ensure([], (require) => {
-        cb(null, [
-          // Remove imports!
-          require('./Counter').default(store)
-        ])
-      })
-    }
-
-    However, this is not necessary for code-splitting! It simply provides
-    an API for async route definitions. Your code splitting should occur
-    inside the route `getComponent` function, since it is only invoked
-    when the route exists and matches.
-*/
 
 export default createRoutes

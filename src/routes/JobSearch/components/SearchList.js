@@ -1,10 +1,11 @@
 import React from 'react'
 import Post from './Post'
-import {List, ListItem} from 'material-ui/List'
+import SearchForm from './SearchForm'
+import { List, ListItem } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import Subheader from 'material-ui/Subheader'
 import Avatar from 'material-ui/Avatar'
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
+import { grey400, darkBlack, lightBlack } from 'material-ui/styles/colors'
 import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import IconMenu from 'material-ui/IconMenu'
@@ -14,46 +15,46 @@ import RaisedButton from 'material-ui/RaisedButton'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 
-export const Counter = (props) => (
+export const SearchList = (props) => (
   <div style={{ margin: '0 auto' }} >
-    <button className='btn btn-default' onClick={props.fetchPosts}>
-      Fetch Posts
-    </button>
-    <div className="row">
-      <div className="col-xs-12">
-        <div className="jobgridlist">
+    <div className='row'>
+      <div className='col-xs-12 col-lg-3'>
+        <SearchForm onSubmit={data => { props.fetchPosts(data) }} />
+      </div>
+      <div className='col-xs-12 col-lg-9'>
+        <div className='jobsearchlist'>
           <List>
-            <Subheader>Current Job Prospects</Subheader>
-            <Divider inset={true} />
+            <Subheader>Current Search Results</Subheader>
+            <Divider inset />
             {Object.keys(props.posts).map(key => {
               return (
-              <div>
-                <ListItem
-                  key={props.posts[key].id}
-                  primaryText={props.posts[key].title}
-                  rightIconButton={
-                    <FloatingActionButton style={{top: '22px',}} mini={true} secondary={true}>
-                      <ContentAdd />
-                    </FloatingActionButton>
-                  }
-                  secondaryText={
-                    <p>
-                      <span>{props.posts[key].author}</span><br />
-                      <span>{props.posts[key].permalink}</span>
-                    </p>
-                  }
-                  secondaryTextLines={2}
-                />
-                <Divider inset={true} />
-              </div>
-            )
+                <div>
+                  <ListItem
+                    key={key}
+                    primaryText={props.posts[key].jobtitle}
+                    rightIconButton={
+                      <FloatingActionButton style={{ top: '22px' }} mini secondary onTouchTap={() => props.savePost(props.posts[key])}>
+                        <ContentAdd />
+                      </FloatingActionButton>
+                    }
+                    secondaryText={
+                      <p>
+                        <span>{props.posts[key].company}</span><br />
+                        <span>{props.posts[key].url}</span>
+                      </p>
+                    }
+                    secondaryTextLines={2}
+                  />
+                  <Divider inset />
+                </div>
+              )
             })}
           </List>
         </div>
+
       </div>
     </div>
   </div>
 )
 
-
-export default Counter
+export default SearchList

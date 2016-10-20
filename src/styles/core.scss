@@ -64,3 +64,14 @@ html [type="button"], /* 1 */
   background-color: #fcfeff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
+
+.jobsearchlist {
+  border-top: 1px solid rgba(255, 255, 255, 0.298039);
+  border-right: 1px solid rgba(255, 255, 255, 0.298039);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.298039);
+  border-left: 1px solid rgba(255, 255, 255, 0.298039);
+  height: 60vh;
+  overflow: auto;
+  background-color: #fcfeff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}

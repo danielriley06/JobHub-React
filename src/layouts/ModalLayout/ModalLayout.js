@@ -1,15 +1,13 @@
 import React from 'react'
-import Header from '../../components/Header'
-import './CoreLayout.scss'
+import './ModalLayout.scss'
 import '../../styles/core.scss'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-export const CoreLayout = ({ children }) => (
+export const ModalLayout = ({ children }) => (
 
   <MuiThemeProvider>
     <div>
-      <Header />
-      <div className='container-fluid text-center'>
+      <div className='loginContainer'>
         <div className='core-layout__viewport'>
           {children}
         </div>
@@ -18,8 +16,8 @@ export const CoreLayout = ({ children }) => (
   </MuiThemeProvider>
 )
 
-CoreLayout.propTypes = {
+ModalLayout.propTypes = {
   children : React.PropTypes.element.isRequired
 }
 
-export default CoreLayout
+export default ModalLayout

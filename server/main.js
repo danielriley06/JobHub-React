@@ -3,6 +3,7 @@ const debug = require('debug')('app:server')
 const webpack = require('webpack')
 const webpackConfig = require('../build/webpack.config')
 const config = require('../config')
+const request = require('request')
 
 const app = express()
 const paths = config.utils_paths
@@ -29,6 +30,11 @@ if (config.env === 'development') {
     stats       : config.compiler_stats
   }))
   app.use(require('webpack-hot-middleware')(compiler))
+
+  app.use('/api', function (req, res) {
+  let url = 'http://api.lvh.me:3000' + req.url
+  req.pipe(request(url)).pipe(res)
+})
 
   // Serve static assets from ~/src/static since Webpack is unaware of
   // these files. This middleware doesn't need to be enabled outside

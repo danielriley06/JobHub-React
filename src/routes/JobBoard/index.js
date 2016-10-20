@@ -19,6 +19,6 @@ export default (store) => ({
       cb(null, Board)
 
     /* Webpack named bundle   */
-  }, 'board')
+    }, 'board')
   }
 })

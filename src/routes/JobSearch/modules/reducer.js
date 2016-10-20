@@ -1,9 +1,10 @@
-import { FETCH_POSTS } from './actions'
+import { FETCH_POSTS, SAVE_POST } from './actions'
 
-const initialState = [ ]
+const initialState = {}
 
 const ACTION_HANDLERS = {
-  [FETCH_POSTS] : (state, action) => ({...state, ...action.posts})
+  [FETCH_POSTS] : (state, action) => ({ ...state, ...action.posts }),
+  [SAVE_POST] : (state, action) => ({ ...state, ...action.jobs })
 }
 
 export default function counterReducer (state = initialState, action) {
