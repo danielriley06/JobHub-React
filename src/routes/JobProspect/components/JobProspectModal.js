@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 import Dialog from 'material-ui/Dialog'
 import { Field, reduxForm } from 'redux-form'
 import TextField from 'material-ui/TextField'
@@ -42,38 +43,36 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children })
     children={children} />
 )
 
-const JobProspectModalForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+let JobProspectModalForm = props => {
+  const { handleSubmit, pristine, reset, submitting, open } = props
   return (
     <Dialog
-        title="Dialog With Actions"
+        title="Job Prospect"
         modal={true}
-        open={props.state.open}
+        open={open}
+        autoScrollBodyContent={true}
       >
       <form onSubmit={handleSubmit}>
-        <Paper zDepth={1} rounded={false}>
-          <Field name='jobTitle' component={renderTextField} label='Job Title' />
-          <Divider />
-          <Field name='jobCity' component={renderTextField} label='City' />
-          <Divider />
-          <Field name='jobState' component={renderTextField} label='State Abbrev.' />
-          <Divider />
-          <Field name='searchRadius' component={renderSelectField} label='Search Radius'>
-            <MenuItem value={'5'} primaryText='5 miles' />
-            <MenuItem value={'10'} primaryText='10 miles' />
-            <MenuItem value={'25'} primaryText='25 miles (Default)' />
-            <MenuItem value={'50'} primaryText='50 miles' />
-            <MenuItem value={'100'} primaryText='100 miles' />
+          <Field name='status' component={renderSelectField} label='Status'>
+            <MenuItem value={'Saved'} primaryText='Saved' />
+            <MenuItem value={'Applied'} primaryText='Applied' />
+            <MenuItem value={'Interviewing'} primaryText='Interviewing' />
+            <MenuItem value={'Closed'} primaryText='Closed' />
           </Field>
-        </Paper>
+          <Field name='company' component={renderTextField} label='Company' />
+          <Field name='jobtitle' component={renderTextField} label='Job Title' />
+          <Field name='city' component={renderTextField} label='City' />
+          <Field name='state' component={renderTextField} label='State Abbrev.' />
+          <Field name='contact_name' component={renderTextField} label='Contact Name' />
+          <Field name='contact_email' component={renderTextField} label='Contact Email' />
+          <Field name='notes' component={renderTextField} label='Notes' />
         <div>
           <RaisedButton
-            label='Search Indeed.com'
+            label='Save and Close'
             type='Submit'
             secondary
             fullWidth
             style={{ marginTop: '12' }}
-            disabled={pristine || submitting}
           />
         </div>
       </form>
@@ -81,7 +80,17 @@ const JobProspectModalForm = props => {
   )
 }
 
-export default reduxForm({
-  form: 'JobProspectModalForm',  // a unique identifier for this form
-  validate
+// Decorate with reduxForm(). It will read the initialValues prop provided by connect()
+JobProspectModalForm = reduxForm({
+  form: 'JobProspectModalForm',
+  enableReinitialize: true  // a unique identifier for this form
 })(JobProspectModalForm)
+
+// You have to connect() to any reducers that you wish to connect to yourself
+JobProspectModalForm = connect(
+  state => ({
+    initialValues: state.jobprospects.setActiveJob.initialValues // pull initial values from account reducer
+  })             // bind account loading action creator
+)(JobProspectModalForm)
+
+export default JobProspectModalForm

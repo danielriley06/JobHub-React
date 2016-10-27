@@ -26,7 +26,7 @@ export function fetchPosts (data) {
 function receivePosts (response) {
   return {
     type: 'FETCH_POSTS',
-    posts: response.data.results
+    jobs: response.data.results
   }
 }
 

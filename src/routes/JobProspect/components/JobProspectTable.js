@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { List, ListItem } from 'material-ui/List'
-import JobProspectModalForm from './JobProspectModal'
+
 import Divider from 'material-ui/Divider'
 import Subheader from 'material-ui/Subheader'
 import Avatar from 'material-ui/Avatar'
@@ -19,28 +19,27 @@ const styles = {
     justifyContent: 'space-around'
   },
   gridList: {
-    width: 500,
-    height: 500,
+    width: '500px',
+    height: '500px',
     overflowY: 'auto',
-    marginBottom: 24
+    marginBottom: '24px'
   }
 }
 
-const JobProspectTable = ({posts, lastUpdated, handleOpen, state}) => (
+const JobProspectTable = ({jobs, lastUpdated, handleOpen, state}) => (
   <div className='row'>
     <div className='col-xs-12 col-lg-6'>
       <div className='jobgridlist'>
-        <JobProspectModalForm state={state} />
           <List>
             <Subheader>Current Job Prospects - Last updated at {new Date(lastUpdated).toLocaleTimeString()}</Subheader>
             <Divider inset />
-            {posts.map((listItem) => (
+            {jobs.map((listItem) => (
               <div>
                 <ListItem
-                  key={listItem.id}
+                  key={listItem.id.toString()}
                   primaryText={listItem.company}
                   rightIcon={<ActionInfo />}
-                  onTouchTap={handleOpen}
+                  onTouchTap={() => handleOpen(listItem)}
                   secondaryText={
                     <p>
                       <span>{listItem.jobtitle}</span><br />
@@ -54,7 +53,7 @@ const JobProspectTable = ({posts, lastUpdated, handleOpen, state}) => (
             ))}
           </List>
       </div>
-      <RaisedButton label='Add Job Prospect' secondary fullWidth style={{ marginTop: '10px' }} />
+      <RaisedButton label='Add Job Prospect' secondary fullWidth style={{ marginTop: '10px' }} onTouchTap={handleOpen} />
     </div>
   </div>
 )

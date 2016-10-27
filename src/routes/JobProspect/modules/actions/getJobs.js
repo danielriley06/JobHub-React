@@ -1,24 +1,27 @@
 import axios from 'axios'
 
-export const REQUEST_POSTS = 'REQUEST_POSTS'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const SELECT_REDDIT = 'SELECT_REDDIT'
-export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT'
+export const REQUEST_JOBS = 'REQUEST_JOBS'
+export const RECEIVE_JOBS = 'RECEIVE_JOBS'
+export const INVALIDATE_JOB = 'INVALIDATE_JOB'
+export const OPEN_JOB = 'OPEN_JOB'
 
-export const selectReddit = () => ({
-  type: SELECT_REDDIT
+
+export const openJob = (listItem) => ({
+  type: OPEN_JOB,
+  id: listItem.id,
+  job: listItem
 })
 
 export const invalidateReddit = () => ({
-  type: INVALIDATE_REDDIT
+  type: INVALIDATE_JOB
 })
 
 export const requestPosts = () => ({
-  type: REQUEST_POSTS
+  type: REQUEST_JOBS
 })
 
 export const receivePosts = (response) => ({
-  type: RECEIVE_POSTS,
+  type: RECEIVE_JOBS,
   posts: response.data.map(index => index),
   receivedAt: Date.now()
 })

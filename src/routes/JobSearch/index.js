@@ -13,7 +13,7 @@ export default (store) => ({
       const reducer = require('./modules/reducer').default
 
       /*  Add the reducer to the store on key 'counter'  */
-      injectReducer(store, { key: 'posts', reducer })
+      injectReducer(store, { key: 'jobs', reducer })
 
       /*  Return getComponent   */
       cb(null, Counter)

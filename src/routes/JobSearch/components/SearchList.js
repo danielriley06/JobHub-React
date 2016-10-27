@@ -26,21 +26,21 @@ export const SearchList = (props) => (
           <List>
             <Subheader>Current Search Results</Subheader>
             <Divider inset />
-            {Object.keys(props.posts).map(key => {
+            {Object.keys(props.jobs).map(key => {
               return (
                 <div>
                   <ListItem
                     key={key}
-                    primaryText={props.posts[key].jobtitle}
+                    primaryText={props.jobs[key].jobtitle}
                     rightIconButton={
-                      <FloatingActionButton style={{ top: '22px' }} mini secondary onTouchTap={() => props.savePost(props.posts[key])}>
+                      <FloatingActionButton style={{ top: '22px' }} mini secondary onTouchTap={() => props.savePost(props.jobs[key])}>
                         <ContentAdd />
                       </FloatingActionButton>
                     }
                     secondaryText={
                       <p>
-                        <span>{props.posts[key].company}</span><br />
-                        <span>{props.posts[key].url}</span>
+                        <span>{props.jobs[key].company}</span><br />
+                        <span>{props.jobs[key].url}</span>
                       </p>
                     }
                     secondaryTextLines={2}

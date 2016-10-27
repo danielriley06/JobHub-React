@@ -3,7 +3,7 @@ import { FETCH_POSTS, SAVE_POST } from './actions'
 const initialState = {}
 
 const ACTION_HANDLERS = {
-  [FETCH_POSTS] : (state, action) => ({ ...state, ...action.posts }),
+  [FETCH_POSTS] : (state, action) => ({ ...state, ...action.jobs }),
   [SAVE_POST] : (state, action) => ({ ...state, ...action.jobs })
 }
 

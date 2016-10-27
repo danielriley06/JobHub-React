@@ -8,7 +8,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => ({
-  posts: state.posts
+  jobs: state.jobs
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchList)
