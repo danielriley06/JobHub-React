@@ -7,7 +7,12 @@ import LoginRoute from './Login'
 
 function requireAuth (store, replace) {
   const token = localStorage.getItem('auth_token')
-  if (!token) replace('/login')
+  if (!token) {
+    replace('/login')
+  }
+  else {
+    store.dispatch(fetchPostsIfNeeded())
+  }
 }
 
 

@@ -18,10 +18,6 @@ import Spinner from 'react-spinkit'
 
 export const SearchList = (props) => (
   <div style={{ margin: '0 auto' }} >
-    <div className='row'>
-      <div className='col-xs-12 col-lg-3'>
-        <SearchForm onSubmit={data => { props.handleClick(data) }} />
-      </div>
       <div className='col-xs-12 col-lg-9'>
         <div className='jobsearchlist'>
           <List>
@@ -41,13 +37,21 @@ export const SearchList = (props) => (
               return (
                 <div>
                   <ListItem
+                  disabled
                     key={key}
                     primaryText={props.jobs[key].jobtitle}
                     rightIconButton={
-                      <FloatingActionButton style={{ top: '22px' }} mini secondary onTouchTap={() => props.handleSave(props.jobs[key])}>
+                      <FloatingActionButton
+                      style={{ top: '22px' }}
+                      mini
+                      secondary
+                      disabled={props.isSaved(props.jobs[key].jobkey)}
+                      onTouchTap={() => props.handleSave(props.jobs[key])}
+                      >
                         <ContentAdd />
                       </FloatingActionButton>
                     }
+
                     secondaryText={
                       <p>
                         <span>{props.jobs[key].company}</span><br />
@@ -66,7 +70,6 @@ export const SearchList = (props) => (
         </div>
 
       </div>
-    </div>
   </div>
 )
 
