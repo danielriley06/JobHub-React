@@ -14,16 +14,27 @@ import ActionInfo from 'material-ui/svg-icons/action/info'
 import RaisedButton from 'material-ui/RaisedButton'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
+import Spinner from 'react-spinkit'
 
 export const SearchList = (props) => (
   <div style={{ margin: '0 auto' }} >
     <div className='row'>
       <div className='col-xs-12 col-lg-3'>
-        <SearchForm onSubmit={data => { props.fetchPosts(data) }} />
+        <SearchForm onSubmit={data => { props.handleClick(data) }} />
       </div>
       <div className='col-xs-12 col-lg-9'>
         <div className='jobsearchlist'>
           <List>
+          {props.isEmpty
+            ? (props.isFetching ?
+              <div className='center'>
+                <Spinner spinnerName='three-bounce' noFadeIn />
+              </div> :
+              <div className='center'>
+                <h2>Use the search form to find job posts...</h2>
+              </div>
+            )
+            : <div style={{ opacity: props.isFetching ? 0.5 : 1 }}>
             <Subheader>Current Search Results</Subheader>
             <Divider inset />
             {Object.keys(props.jobs).map(key => {
@@ -33,7 +44,7 @@ export const SearchList = (props) => (
                     key={key}
                     primaryText={props.jobs[key].jobtitle}
                     rightIconButton={
-                      <FloatingActionButton style={{ top: '22px' }} mini secondary onTouchTap={() => props.savePost(props.jobs[key])}>
+                      <FloatingActionButton style={{ top: '22px' }} mini secondary onTouchTap={() => props.handleSave(props.jobs[key])}>
                         <ContentAdd />
                       </FloatingActionButton>
                     }
@@ -49,6 +60,8 @@ export const SearchList = (props) => (
                 </div>
               )
             })}
+              </div>
+          }
           </List>
         </div>
 

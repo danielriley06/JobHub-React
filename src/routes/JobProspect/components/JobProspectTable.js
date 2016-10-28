@@ -27,8 +27,8 @@ const styles = {
 }
 
 const JobProspectTable = ({jobs, lastUpdated, handleOpen, state}) => (
-  <div className='row'>
-    <div className='col-xs-12 col-lg-6'>
+
+    <div className='col-xs-8'>
       <div className='jobgridlist'>
           <List>
             <Subheader>Current Job Prospects - Last updated at {new Date(lastUpdated).toLocaleTimeString()}</Subheader>
@@ -55,7 +55,7 @@ const JobProspectTable = ({jobs, lastUpdated, handleOpen, state}) => (
       </div>
       <RaisedButton label='Add Job Prospect' secondary fullWidth style={{ marginTop: '10px' }} onTouchTap={handleOpen} />
     </div>
-  </div>
+
 )
 
 export default JobProspectTable

@@ -1,10 +1,11 @@
-import { FETCH_POSTS, SAVE_POST } from './actions'
+import { FETCH_POSTS, SAVE_POST, FETCH_POSTS_SUCCESS } from './actions'
 
-const initialState = {}
+const initialState = {results:[], isFetching: false}
 
 const ACTION_HANDLERS = {
-  [FETCH_POSTS] : (state, action) => ({ ...state, ...action.jobs }),
-  [SAVE_POST] : (state, action) => ({ ...state, ...action.jobs })
+  [FETCH_POSTS] : (state, action) => ({ ...state, ...action }),
+  [SAVE_POST] : (state, action) => ({ ...state, ...action.jobs }),
+  [FETCH_POSTS_SUCCESS] : (state, action) => ({ ...state, ...action })
 }
 
 export default function counterReducer (state = initialState, action) {

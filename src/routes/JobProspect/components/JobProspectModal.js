@@ -44,7 +44,7 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children })
 )
 
 let JobProspectModalForm = props => {
-  const { handleSubmit, pristine, reset, submitting, open } = props
+  const { handleSubmit, pristine, reset, submitting, open, initialValues } = props
   return (
     <Dialog
         title="Job Prospect"
@@ -53,6 +53,7 @@ let JobProspectModalForm = props => {
         autoScrollBodyContent={true}
       >
       <form onSubmit={handleSubmit}>
+        <div className='col-xs-6'>
           <Field name='status' component={renderSelectField} label='Status'>
             <MenuItem value={'Saved'} primaryText='Saved' />
             <MenuItem value={'Applied'} primaryText='Applied' />
@@ -65,7 +66,23 @@ let JobProspectModalForm = props => {
           <Field name='state' component={renderTextField} label='State Abbrev.' />
           <Field name='contact_name' component={renderTextField} label='Contact Name' />
           <Field name='contact_email' component={renderTextField} label='Contact Email' />
-          <Field name='notes' component={renderTextField} label='Notes' />
+        </div>
+        <div className='col-xs-6'>
+          <a href={props.initialValues.url} target="_blank">
+            <RaisedButton
+              label='Open Job Post'
+              fullWidth
+              primary
+              style={{ marginTop: '12' }}
+            />
+          </a>
+
+          <p>
+          Job Post Snippet:<br/> {props.initialValues.snippet}
+          </p>
+
+          <Field name="notes" component={renderTextField} label="Notes" multiLine={true} rows={4}/>
+        </div>
         <div>
           <RaisedButton
             label='Save and Close'

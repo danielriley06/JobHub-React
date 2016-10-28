@@ -4,6 +4,8 @@ import { fetchPosts, fetchPostsIfNeeded, openJob, closeJob } from '../modules/ac
 import { updateJob, createJob } from '../modules/actions/postJobs'
 import JobProspectTable from '../components/JobProspectTable'
 import JobProspectModalForm from '../components/JobProspectModal'
+import JobProspectMetrics from '../components/JobProspectMetrics'
+import Spinner from 'react-spinkit'
 
 class App extends Component {
   static propTypes = {
@@ -22,7 +24,6 @@ class App extends Component {
   handleOpen = (listItem) => {
     const { dispatch } = this.props
     dispatch(openJob(listItem))
-    console.log(listItem)
   }
 
   handleClose = (data) => {
@@ -36,10 +37,16 @@ class App extends Component {
     return (
       <div>
         {isEmpty
-          ? (isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
+          ? (isFetching ?
+            <div className='center'>
+              <Spinner spinnerName='three-bounce' noFadeIn />
+            </div> : <h2>Empty.</h2>)
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-              <JobProspectModalForm open={open} onSubmit={data => { this.handleClose(data) }} />
-              <JobProspectTable jobs={jobs} lastUpdated={lastUpdated} handleOpen={this.handleOpen} handleClose={this.handleClose} state={this.state} />
+              <div className='row'>
+                <JobProspectModalForm open={open} onSubmit={data => { this.handleClose(data) }} />
+                <JobProspectTable jobs={jobs} lastUpdated={lastUpdated} handleOpen={this.handleOpen} handleClose={this.handleClose} state={this.state} />
+                <JobProspectMetrics />
+              </div>
             </div>
         }
       </div>
