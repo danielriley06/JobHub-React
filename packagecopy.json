@@ -162,3 +162,9 @@
     "webpack-hot-middleware": "^2.12.2"
   }
 }
+
+
+app.use('/api', function (req, res) {
+  let url = 'http://api.lvh.me:3000' + req.url
+  req.pipe(request(url)).pipe(res)
+})  <<< removed from server>main.js because let isnt supported
