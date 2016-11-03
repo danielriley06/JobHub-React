@@ -56,6 +56,13 @@
       }
     },
     "start": {
+      "command": "npm run clean && npm run compile && babel-node bin/server",
+      "env": {
+        "NODE_ENV": "production",
+        "DEBUG": "app:*"
+      }
+    },
+    "devstart": {
       "command": "node bin/server",
       "env": {
         "DEBUG": "app:*"
@@ -83,6 +90,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-runtime": "^6.11.6",
     "better-npm-run": "0.0.11",
+    "chart.js": "^2.3.0",
     "css-loader": "^0.25.0",
     "cssnano": "^3.7.4",
     "debug": "^2.2.0",
@@ -105,15 +113,18 @@
     "normalizr": "^2.2.1",
     "postcss-loader": "^0.13.0",
     "react": "^15.0.0",
+    "react-chartjs-2": "^1.5.0",
     "react-dom": "^15.0.0",
     "react-motion": "^0.4.5",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.0",
     "react-spinkit": "^1.1.11",
     "react-swipeable-views": "^0.7.10",
+    "recharts": "^0.15.3",
     "redux": "^3.6.0",
     "redux-thunk": "^2.0.0",
     "request": "^2.75.0",
+    "reselect": "^2.5.4",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",

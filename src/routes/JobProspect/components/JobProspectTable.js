@@ -28,7 +28,7 @@ const styles = {
 
 const JobProspectTable = ({jobs, lastUpdated, handleOpen, state}) => (
 
-    <div className='col-xs-8'>
+    <div className='col-xs-12'>
       <div className='jobgridlist'>
           <List>
             <Subheader>Current Job Prospects - Last updated at {new Date(lastUpdated).toLocaleTimeString()}</Subheader>

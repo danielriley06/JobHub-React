@@ -10,9 +10,7 @@ function requireAuth (store, replace) {
   if (!token) {
     replace('/login')
   }
-  else {
-    store.dispatch(fetchPostsIfNeeded())
-  }
+
 }
 
 

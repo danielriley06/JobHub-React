@@ -8,14 +8,14 @@ export default (store) => ({
     require.ensure([], (require) => {
       /*  Webpack - use require callback to define
           dependencies for bundling   */
-      const Counter = require('./containers/JobProspectContainer').default
+      const Prospect = require('./containers/JobProspectContainer').default
       const reducer = require('./modules/reducer').default
 
       /*  Add the reducer to the store on key 'counter'  */
       injectReducer(store, { key: 'jobprospects', reducer })
 
       /*  Return getComponent   */
-      cb(null, Counter)
+      cb(null, Prospect)
 
     /* Webpack named bundle   */
   }, 'jobs')

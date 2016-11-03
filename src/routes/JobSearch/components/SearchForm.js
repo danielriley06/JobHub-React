@@ -66,7 +66,7 @@ const SearchForm = props => {
           type='Submit'
           secondary
           fullWidth
-          style={{ marginTop: '12' }}
+          style={{ marginTop: '12', marginBottom: '12' }}
           disabled={pristine || submitting}
         />
       </div>

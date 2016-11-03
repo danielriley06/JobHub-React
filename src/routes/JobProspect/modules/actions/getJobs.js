@@ -40,8 +40,8 @@ const fetchPosts = () => dispatch => {
 }
 
 const shouldFetchPosts = (state) => {
-  const posts = state.jobsList
-  if (!posts) {
+  const posts = state.jobprospects.jobs
+  if (posts.items.length == 0) {
     return true
   }
   if (posts.isFetching) {

@@ -59,10 +59,22 @@ html [type="button"], /* 1 */
   border-right: 1px solid rgba(255, 255, 255, 0.298039);
   border-bottom: 1px solid rgba(255, 255, 255, 0.298039);
   border-left: 1px solid rgba(255, 255, 255, 0.298039);
-  height: 70vh;
+  height: 50vh;
   overflow: auto;
   background-color: #fcfeff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.jobmetriclist {
+  border-top: 1px solid rgba(255, 255, 255, 0.298039);
+  border-right: 1px solid rgba(255, 255, 255, 0.298039);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.298039);
+  border-left: 1px solid rgba(255, 255, 255, 0.298039);
+  height: 30vh;
+  overflow: hidden;
+  background-color: #fcfeff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  padding: 1px;
 }
 
 .jobsearchlist {
@@ -74,6 +86,7 @@ html [type="button"], /* 1 */
   overflow: auto;
   background-color: #fcfeff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
 }
 
 .center {
@@ -83,4 +96,10 @@ html [type="button"], /* 1 */
   display: flex;
   justify-content: center; /*centers items on the line (the x-axis by default)*/
   align-items: center; /*centers items on the cross-axis (y by default)*/
+}
+
+.col-center-block {
+    float: none;
+    display: block;
+    margin: 0 auto;
 }

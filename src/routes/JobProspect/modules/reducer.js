@@ -41,7 +41,8 @@ const jobs = (state = {
     case POST_JOBS_SUCCESS:
       return {
         ...state,
-        isPosting: false
+        isPosting: false,
+        didInvalidate: true
       }
     case POST_JOBS_FAILURE:
         return {

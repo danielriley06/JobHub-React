@@ -38,12 +38,13 @@ class JobSearch extends Component {
 
   render() {
     const { jobs, isFetching } = this.props
+    const isEmpty = jobs.length === 0
     return (
       <div className='row'>
         <div className='col-xs-12 col-lg-3'>
-          <SearchForm onSubmit={data => { handleClick(data) }} />
+          <SearchForm onSubmit={data => { this.handleClick(data) }} />
         </div>
-        <SearchList jobs={jobs} handleClick={data => { this.handleClick(data) }} handleSave={data => { this.handleSave(data) }} isFetching={isFetching} isSaved={this.isSaved.bind(this)} />
+        <SearchList jobs={jobs} handleClick={data => { this.handleClick(data) }} handleSave={data => { this.handleSave(data) }} isFetching={isFetching} isEmpty={isEmpty} isSaved={this.isSaved.bind(this)} />
       </div>
     )
   }

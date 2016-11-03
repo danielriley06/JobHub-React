@@ -21,6 +21,11 @@ class App extends Component {
     dispatch(fetchPostsIfNeeded())
   }
 
+  componentDidUpdate() {
+    const { dispatch } = this.props
+    dispatch(fetchPostsIfNeeded())
+  }
+
   handleOpen = (listItem) => {
     const { dispatch } = this.props
     dispatch(openJob(listItem))
@@ -42,10 +47,12 @@ class App extends Component {
               <Spinner spinnerName='three-bounce' noFadeIn />
             </div> : <h2>Empty.</h2>)
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-              <div className='row'>
-                <JobProspectModalForm open={open} onSubmit={data => { this.handleClose(data) }} />
-                <JobProspectTable jobs={jobs} lastUpdated={lastUpdated} handleOpen={this.handleOpen} handleClose={this.handleClose} state={this.state} />
-                <JobProspectMetrics />
+              <div className='container-fluid'>
+                <div className='row flex-items-xs-center'>
+                  <JobProspectModalForm open={open} onSubmit={data => { this.handleClose(data) }} />
+                  <JobProspectMetrics jobs={jobs}/>
+                  <JobProspectTable jobs={jobs} lastUpdated={lastUpdated} handleOpen={this.handleOpen} handleClose={this.handleClose} state={this.state} />
+                </div>
               </div>
             </div>
         }
