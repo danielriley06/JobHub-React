@@ -21,7 +21,7 @@ var styles = {
   }
 }
 
-function signOut() {
+function signOut () {
   localStorage.removeItem('auth_token')
   window.location.href = '/login'
 }
@@ -39,7 +39,7 @@ export const Header = () => (
         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
-        <MenuItem primaryText='Sign out' onTouchTap={() => signOut()}/>
+        <MenuItem primaryText='Sign out' onTouchTap={() => signOut()} />
       </IconMenu>
     }
   >

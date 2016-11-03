@@ -4,9 +4,9 @@ import {
 } from './actions'
 
 const initialState = {
-    isFetching: false,
-    isAuthenticated: localStorage.getItem('id_token') ? true : false
-  }
+  isFetching: false,
+  isAuthenticated: localStorage.getItem('id_token') ? true : false
+}
 
 const ACTION_HANDLERS = {
   [LOGIN_REQUEST] : (state, action) => ({ ...state, isFetching: true,
@@ -14,7 +14,7 @@ const ACTION_HANDLERS = {
   user: action.creds }),
   [LOGIN_SUCCESS] : (state, action) => ({ ...state, isFetching: false,
   isAuthenticated: true,
-  id_token: action.id_token, 
+  id_token: action.id_token,
   errorMessage: '' }),
   [LOGIN_FAILURE] : (state, action) => ({ ...state, isFetching: false,
   isAuthenticated: false,

@@ -9,8 +9,8 @@ export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE'
 
 function requestPosts () {
   return {
-  type: 'FETCH_POSTS',
-  isFetching: true
+    type: 'FETCH_POSTS',
+    isFetching: true
   }
 }
 
@@ -34,20 +34,19 @@ export const fetchPosts = (data) => dispatch => {
 }
 
 export function savePost (data) {
-  var job = {company:`${data.company}`, city:`${data.city}`, state:`${data.state}`, url:`${data.url}`, jobtitle:`${data.jobtitle}`, jobkey:`${data.jobkey}`, snippet:`${data.snippet}`}
-  return function(dispatch) {
+  var job = { company:`${data.company}`, city:`${data.city}`, state:`${data.state}`, url:`${data.url}`, jobtitle:`${data.jobtitle}`, jobkey:`${data.jobkey}`, snippet:`${data.snippet}` }
+  return function (dispatch) {
     axios({
       method: 'post',
       url: '/api/jobs',
-      headers: {'Content-Type':'application/json','Authorization':localStorage.getItem('auth_token')},
+      headers: { 'Content-Type':'application/json', 'Authorization':localStorage.getItem('auth_token') },
       data: job
     })
     .then(function (response) {
       console.log(response)
-
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error)
     })
   }
 }

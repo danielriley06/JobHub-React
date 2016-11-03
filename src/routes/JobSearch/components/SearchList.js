@@ -18,58 +18,58 @@ import Spinner from 'react-spinkit'
 
 export const SearchList = (props) => (
   <div style={{ margin: '0 auto' }} >
-      <div className='col-xs-12 col-lg-9'>
-        <div className='jobsearchlist'>
-          <List>
+    <div className='col-xs-12 col-lg-9'>
+      <div className='jobsearchlist'>
+        <List>
           {props.isEmpty
             ? (props.isFetching ?
               <div className='center'>
                 <Spinner spinnerName='three-bounce' noFadeIn />
               </div> :
-              <div className='center'>
-                <h2>Use the search form to find job posts...</h2>
-              </div>
+                <div className='center'>
+                  <h2>Use the search form to find job posts...</h2>
+                </div>
             )
             : <div style={{ opacity: props.isFetching ? 0.5 : 1 }}>
-            <Subheader>Current Search Results</Subheader>
-            <Divider inset />
-            {Object.keys(props.jobs).map(key => {
-              return (
-                <div>
-                  <ListItem
-                  disabled
-                    key={key}
-                    primaryText={props.jobs[key].jobtitle}
-                    rightIconButton={
-                      <FloatingActionButton
-                      style={{ top: '22px' }}
-                      mini
-                      secondary
-                      disabled={props.isSaved(props.jobs[key].jobkey)}
-                      onTouchTap={() => props.handleSave(props.jobs[key])}
+              <Subheader>Current Search Results</Subheader>
+              <Divider inset />
+              {Object.keys(props.jobs).map(key => {
+                return (
+                  <div>
+                    <ListItem
+                      disabled
+                      key={key}
+                      primaryText={props.jobs[key].jobtitle}
+                      rightIconButton={
+                        <FloatingActionButton
+                          style={{ top: '22px' }}
+                          mini
+                          secondary
+                          disabled={props.isSaved(props.jobs[key].jobkey)}
+                          onTouchTap={() => props.handleSave(props.jobs[key])}
                       >
-                        <ContentAdd />
-                      </FloatingActionButton>
+                          <ContentAdd />
+                        </FloatingActionButton>
                     }
 
-                    secondaryText={
-                      <p>
-                        <span>{props.jobs[key].company}</span><br />
-                        <span>{props.jobs[key].url}</span>
-                      </p>
+                      secondaryText={
+                        <p>
+                          <span>{props.jobs[key].company}</span><br />
+                          <span>{props.jobs[key].url}</span>
+                        </p>
                     }
-                    secondaryTextLines={2}
+                      secondaryTextLines={2}
                   />
-                  <Divider inset />
-                </div>
+                    <Divider inset />
+                  </div>
               )
-            })}
-              </div>
+              })}
+            </div>
           }
-          </List>
-        </div>
-
+        </List>
       </div>
+
+    </div>
   </div>
 )
 

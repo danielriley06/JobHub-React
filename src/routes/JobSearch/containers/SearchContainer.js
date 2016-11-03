@@ -13,7 +13,7 @@ class JobSearch extends Component {
     dispatch: PropTypes.func.isRequired
   }
 
-  componentWillMount() {
+  componentWillMount () {
     const { dispatch } = this.props
     dispatch(fetchPostsIfNeeded())
   }
@@ -29,14 +29,14 @@ class JobSearch extends Component {
   }
 
   isSaved = (jobkey) => {
-    for (var i=0; i < this.props.prospects.length; i++) {
-        if (this.props.prospects[i].jobkey === jobkey) {
-            return true
-        }
+    for (var i = 0; i < this.props.prospects.length; i++) {
+      if (this.props.prospects[i].jobkey === jobkey) {
+        return true
+      }
     }
-}
+  }
 
-  render() {
+  render () {
     const { jobs, isFetching } = this.props
     const isEmpty = jobs.length === 0
     return (

@@ -19,6 +19,6 @@ export default (store) => ({
       cb(null, Login)
 
     /* Webpack named bundle   */
-  }, 'login')
+    }, 'login')
   }
 })

@@ -16,12 +16,12 @@ class App extends Component {
     open: PropTypes.bool.isRequired
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const { dispatch } = this.props
     dispatch(fetchPostsIfNeeded())
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     const { dispatch } = this.props
     dispatch(fetchPostsIfNeeded())
   }
@@ -36,7 +36,7 @@ class App extends Component {
     dispatch(updateJob(data))
   }
 
-  render() {
+  render () {
     const { jobs, isFetching, lastUpdated, open } = this.props
     const isEmpty = jobs.length === 0
     return (
@@ -47,14 +47,14 @@ class App extends Component {
               <Spinner spinnerName='three-bounce' noFadeIn />
             </div> : <h2>Empty.</h2>)
           : <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-              <div className='container-fluid'>
-                <div className='row flex-items-xs-center'>
-                  <JobProspectModalForm open={open} onSubmit={data => { this.handleClose(data) }} />
-                  <JobProspectMetrics jobs={jobs}/>
-                  <JobProspectTable jobs={jobs} lastUpdated={lastUpdated} handleOpen={this.handleOpen} handleClose={this.handleClose} state={this.state} />
-                </div>
+            <div className='container-fluid'>
+              <div className='row flex-items-xs-center'>
+                <JobProspectModalForm open={open} onSubmit={data => { this.handleClose(data) }} />
+                <JobProspectMetrics jobs={jobs} />
+                <JobProspectTable jobs={jobs} lastUpdated={lastUpdated} handleOpen={this.handleOpen} handleClose={this.handleClose} state={this.state} />
               </div>
             </div>
+          </div>
         }
       </div>
     )

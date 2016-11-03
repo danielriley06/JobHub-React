@@ -47,10 +47,10 @@ let JobProspectModalForm = props => {
   const { handleSubmit, pristine, reset, submitting, open, initialValues } = props
   return (
     <Dialog
-        title="Job Prospect"
-        modal={true}
-        open={open}
-        autoScrollBodyContent={true}
+      title='Job Prospect'
+      modal
+      open={open}
+      autoScrollBodyContent
       >
       <form onSubmit={handleSubmit}>
         <div className='col-xs-6'>
@@ -68,7 +68,7 @@ let JobProspectModalForm = props => {
           <Field name='contact_email' component={renderTextField} label='Contact Email' />
         </div>
         <div className='col-xs-6'>
-          <a href={props.initialValues.url} target="_blank">
+          <a href={props.initialValues.url} target='_blank'>
             <RaisedButton
               label='Open Job Post'
               fullWidth
@@ -78,10 +78,10 @@ let JobProspectModalForm = props => {
           </a>
 
           <p>
-          Job Post Snippet:<br/> {props.initialValues.snippet}
+          Job Post Snippet:                    <br /> {props.initialValues.snippet}
           </p>
 
-          <Field name="notes" component={renderTextField} label="Notes" multiLine={true} rows={4}/>
+          <Field name='notes' component={renderTextField} label='Notes' multiLine rows={4} />
         </div>
         <div>
           <RaisedButton

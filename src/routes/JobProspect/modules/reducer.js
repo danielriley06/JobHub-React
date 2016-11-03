@@ -7,7 +7,6 @@ import {
   POST_JOBS_REQUEST, POST_JOBS_SUCCESS, POST_JOBS_FAILURE, CLOSE_JOB
 } from './actions/postJobs'
 
-
 const jobs = (state = {
   isFetching: false,
   didInvalidate: false,
@@ -45,33 +44,33 @@ const jobs = (state = {
         didInvalidate: true
       }
     case POST_JOBS_FAILURE:
-        return {
-          ...state,
-          isPosting: false,
-          message: action.message
-        }
+      return {
+        ...state,
+        isPosting: false,
+        message: action.message
+      }
     default:
       return state
   }
 }
 
 const setActiveJob = (state = {
-          open: false,
-          id: null,
-          initialValues: {
-            id: null,
-            jobkey: null,
-            url: null,
-            company: null,
-            jobtitle: null,
-            city: null,
-            state: null,
-            snippet: null,
-            contact_name: null,
-            contact_email: null,
-            notes:  null
-            }
-          }, action) => {
+  open: false,
+  id: null,
+  initialValues: {
+    id: null,
+    jobkey: null,
+    url: null,
+    company: null,
+    jobtitle: null,
+    city: null,
+    state: null,
+    snippet: null,
+    contact_name: null,
+    contact_email: null,
+    notes:  null
+  }
+}, action) => {
   switch (action.type) {
     case OPEN_JOB:
       return {
@@ -110,15 +109,12 @@ const setActiveJob = (state = {
           contact_name: null,
           contact_email: null,
           notes:  null
-          }
+        }
       }
     default:
       return state
   }
 }
-
-
-
 
 const rootReducer = combineReducers({
   jobs,

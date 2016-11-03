@@ -18,6 +18,6 @@ export default (store) => ({
       cb(null, Prospect)
 
     /* Webpack named bundle   */
-  }, 'jobs')
+    }, 'jobs')
   }
 })

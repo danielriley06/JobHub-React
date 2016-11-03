@@ -26,35 +26,35 @@ const styles = {
   }
 }
 
-const JobProspectTable = ({jobs, lastUpdated, handleOpen, state}) => (
+const JobProspectTable = ({ jobs, lastUpdated, handleOpen, state }) => (
 
-    <div className='col-xs-12'>
-      <div className='jobgridlist'>
-          <List>
-            <Subheader>Current Job Prospects - Last updated at {new Date(lastUpdated).toLocaleTimeString()}</Subheader>
-            <Divider inset />
-            {jobs.map((listItem) => (
-              <div>
-                <ListItem
-                  key={listItem.id.toString()}
-                  primaryText={listItem.company}
-                  rightIcon={<ActionInfo />}
-                  onTouchTap={() => handleOpen(listItem)}
-                  secondaryText={
-                    <p>
-                      <span>{listItem.jobtitle}</span><br />
-                      <span>{listItem.city}, {listItem.state}</span>
-                    </p>
+  <div className='col-xs-12'>
+    <div className='jobgridlist'>
+      <List>
+        <Subheader>Current Job Prospects - Last updated at {new Date(lastUpdated).toLocaleTimeString()}</Subheader>
+        <Divider inset />
+        {jobs.map((listItem) => (
+          <div>
+            <ListItem
+              key={listItem.id.toString()}
+              primaryText={listItem.company}
+              rightIcon={<ActionInfo />}
+              onTouchTap={() => handleOpen(listItem)}
+              secondaryText={
+                <p>
+                  <span>{listItem.jobtitle}</span><br />
+                  <span>{listItem.city}, {listItem.state}</span>
+                </p>
                   }
-                  secondaryTextLines={2}
+              secondaryTextLines={2}
                 />
-                <Divider inset />
-              </div>
+            <Divider inset />
+          </div>
             ))}
-          </List>
-      </div>
-      <RaisedButton label='Add Job Prospect' secondary fullWidth style={{ marginTop: '10px' }} onTouchTap={handleOpen} />
+      </List>
     </div>
+    <RaisedButton label='Add Job Prospect' secondary fullWidth style={{ marginTop: '10px' }} onTouchTap={handleOpen} />
+  </div>
 
 )
 

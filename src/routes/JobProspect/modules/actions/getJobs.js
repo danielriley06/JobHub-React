@@ -5,7 +5,6 @@ export const RECEIVE_JOBS = 'RECEIVE_JOBS'
 export const INVALIDATE_JOB = 'INVALIDATE_JOB'
 export const OPEN_JOB = 'OPEN_JOB'
 
-
 export const openJob = (listItem) => ({
   type: OPEN_JOB,
   id: listItem.id,
@@ -31,7 +30,7 @@ const fetchPosts = () => dispatch => {
   return axios({
     method: 'get',
     url: `api/jobs`,
-    headers: {'Content-Type':'application/json','Authorization':localStorage.getItem('auth_token')}
+    headers: { 'Content-Type':'application/json', 'Authorization':localStorage.getItem('auth_token') }
   })
   .then(function (response) {
     console.log(response)
@@ -50,7 +49,7 @@ const shouldFetchPosts = (state) => {
   return posts.didInvalidate
 }
 
-export const fetchPostsIfNeeded = ()=> (dispatch, getState) => {
+export const fetchPostsIfNeeded = () => (dispatch, getState) => {
   if (shouldFetchPosts(getState())) {
     return dispatch(fetchPosts())
   }

@@ -1,6 +1,6 @@
 import { FETCH_POSTS, SAVE_POST, FETCH_POSTS_SUCCESS } from './actions'
 
-const initialState = {results:[], isFetching: false}
+const initialState = { results:[], isFetching: false }
 
 const ACTION_HANDLERS = {
   [FETCH_POSTS] : (state, action) => ({ ...state, ...action }),
