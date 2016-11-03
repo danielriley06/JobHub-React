@@ -58,15 +58,17 @@
       }
     },
     "start": {
-      "command": "node bin/server",
+      "command": "npm run clean && npm run compile && babel-node bin/server",
       "env": {
+        "NODE_ENV": "production",
         "DEBUG": "app:*"
       }
     },
     "start:prod": {
-      "command": "node bin/server",
+      "command": "npm run clean && npm run compile && babel-node bin/server",
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "DEBUG": "app:*"
       }
     },
     "test": {
