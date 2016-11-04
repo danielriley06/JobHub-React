@@ -11,7 +11,10 @@ const paths = config.utils_paths
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement universal
 // rendering, you'll want to remove this middleware.
-app.use(require('connect-history-api-fallback')())
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('*', function(req, res) {
+    res.sendfile('./dist/index.html');
+});
 
 // ------------------------------------
 // Apply Webpack HMR Middleware
@@ -31,7 +34,7 @@ if (config.env === 'development') {
   }))
   app.use(require('webpack-hot-middleware')(compiler))
 
-  
+
 
   // Serve static assets from ~/src/static since Webpack is unaware of
   // these files. This middleware doesn't need to be enabled outside
