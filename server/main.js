@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const webpackConfig = require('../build/webpack.config')
 const config = require('../config')
 const request = require('request')
+const path = require('path')
 
 const app = express()
 const paths = config.utils_paths
