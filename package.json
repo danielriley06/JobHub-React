@@ -12,9 +12,7 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
-    "start": "better-npm-run start:prod",
-    "serve": "better-npm-run start",
-    "postinstall": "npm run deploy:prod",
+    "start": "better-npm-run start",
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
@@ -38,7 +36,7 @@
       }
     },
     "deploy": {
-      "command": "npm run test && npm run clean && npm run compile",
+      "command": "npm run compile",
       "env": {
         "DEBUG": "app:*"
       }
@@ -58,15 +56,9 @@
       }
     },
     "start": {
-      "command": "babel-node bin/server",
+      "command": "node bin/server",
       "env": {
         "DEBUG": "app:*"
-      }
-    },
-    "start:prod": {
-      "command": "babel-node bin/server",
-      "env": {
-        "NODE_ENV": "production"
       }
     },
     "test": {
@@ -89,9 +81,12 @@
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.5",
     "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
+    "babel-preset-react-optimize": "^1.0.1",
     "babel-preset-stage-0": "^6.3.13",
+    "babel-register": "^6.18.0",
     "babel-runtime": "^6.11.6",
     "better-npm-run": "0.0.11",
     "chart.js": "^2.3.0",
@@ -110,6 +105,11 @@
     "isomorphic-fetch": "^2.2.1",
     "json-loader": "^0.5.4",
     "jwt-decode": "^2.1.0",
+    "koa": "^1.2.4",
+    "koa-connect-history-api-fallback": "^0.3.1",
+    "koa-convert": "^1.2.0",
+    "koa-proxy": "^0.6.0",
+    "koa-static": "^2.0.0",
     "lodash": "^4.16.5",
     "loglevel": "^1.4.1",
     "material-ui": "^0.16.1",

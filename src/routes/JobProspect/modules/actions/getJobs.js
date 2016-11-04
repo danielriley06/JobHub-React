@@ -33,7 +33,6 @@ const fetchPosts = () => dispatch => {
     headers: { 'Content-Type':'application/json', 'Authorization':localStorage.getItem('auth_token') }
   })
   .then(function (response) {
-    console.log(response)
     dispatch(receivePosts(response))
   })
 }

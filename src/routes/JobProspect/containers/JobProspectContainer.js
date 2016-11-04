@@ -21,11 +21,6 @@ class App extends Component {
     dispatch(fetchPostsIfNeeded())
   }
 
-  componentDidUpdate () {
-    const { dispatch } = this.props
-    dispatch(fetchPostsIfNeeded())
-  }
-
   handleOpen = (listItem) => {
     const { dispatch } = this.props
     dispatch(openJob(listItem))

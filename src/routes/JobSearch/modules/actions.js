@@ -26,7 +26,7 @@ export const fetchPosts = (data) => dispatch => {
   dispatch(requestPosts())
   return axios({
     method: 'get',
-    url: `https://crossorigin.me/http://api.indeed.com/ads/apisearch?publisher=7633080574080109&format=json&q=${data.jobTitle}&l=${data.jobCity}%2C+${data.jobState}&sort=&radius=${data.searchRadius}&st=&jt=&start=&limit=100&fromage=&filter=&latlong=1&co=us&chnl=&userip=localhost:3000&useragent=Mozilla/%2F4.0%28Firefox%29&v=2`
+    url: `indeed/ads/apisearch?publisher=7633080574080109&format=json&q=${data.jobTitle}&l=${data.jobCity}%2C+${data.jobState}&sort=&radius=${data.searchRadius}&st=&jt=&start=&limit=100&fromage=&filter=&latlong=1&co=us&chnl=&userip=localhost:3000&useragent=Mozilla/%2F4.0%28Firefox%29&v=2`
   })
     .then(function (response) {
       dispatch(receivePosts(response))
