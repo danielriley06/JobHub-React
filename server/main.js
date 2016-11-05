@@ -12,10 +12,7 @@ const paths = config.utils_paths
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement universal
 // rendering, you'll want to remove this middleware.
-app.use(express.static(path.join(__dirname, 'dist')));
-app.get('*', function(req, res) {
-    res.sendfile('./dist/index.html');
-});
+
 
 // ------------------------------------
 // Apply Webpack HMR Middleware

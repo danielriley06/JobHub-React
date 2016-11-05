@@ -13,7 +13,8 @@ class App extends Component {
     isFetching: PropTypes.bool.isRequired,
     lastUpdated: PropTypes.number,
     dispatch: PropTypes.func.isRequired,
-    open: PropTypes.bool.isRequired
+    open: PropTypes.bool.isRequired,
+    didInvalidate: PropTypes.bool.isRequired
   }
 
   componentDidMount () {
@@ -61,6 +62,7 @@ const mapStateToProps = (state) => {
     jobs: state.jobprospects.jobs.items,
     isFetching: state.jobprospects.jobs.isFetching,
     lastUpdated: state.jobprospects.jobs.lastUpdated,
+    didInvalidate: state.jobprospects.jobs.didInvalidate,
     open: state.jobprospects.setActiveJob.open
   }
 }
